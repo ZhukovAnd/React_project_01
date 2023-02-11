@@ -1,0 +1,12 @@
+.content {
+    grid-area: c;
+    background-color: bisque;
+    padding: 10px;
+}
+
+.item {
+    color: azure;
+}
+.postContent {
+    padding: 10px;
+}
