@@ -23,5 +23,11 @@ const state = {
     }
 }
 
+export const addPost = (text) => {
+  state.profilePage.mypostData.push(text)
+}
+
+
+
 
 export default state
