@@ -24,6 +24,7 @@ const state = {
 }
 
 export const addPost = (text) => {
+  debugger;
   state.profilePage.mypostData.push(text)
 }
 
