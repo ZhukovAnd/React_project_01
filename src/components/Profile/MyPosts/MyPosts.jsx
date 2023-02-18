@@ -3,15 +3,13 @@ import Post from './MyPost/Post';
 import style from './MyPosts.module.css'
 
 const MyPosts = (props) => {
-let posts = props.mypostData.map(postEl => <Post message={postEl.message} />)
-    
+let postsElements = props.myPostData.map(postEl => <Post message={postEl.message} />)
 let newPostElement = React.createRef();
 let addPost = () => {
     let text = newPostElement.current.value;
-    props.addPost({message: {text}, id: 5});
-    
+    props.addPost(text);
+    newPostElement.current.value = '';
 }
-
     return (
         <div className={style.content}>
             <div>
@@ -21,7 +19,7 @@ let addPost = () => {
                 <button onClick={addPost}>Добавить пост</button>
                 <h3> Мои посты</h3>
                 <div className={style.postContent}>
-                    {posts}
+                    {postsElements}
                 </div>
             </div>
         </div>
