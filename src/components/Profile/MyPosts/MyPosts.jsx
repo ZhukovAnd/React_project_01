@@ -10,6 +10,8 @@ let addPost = () => {
     props.addPost(text);
     newPostElement.current.value = '';
 }
+
+
     return (
         <div className={style.content}>
             <div>
