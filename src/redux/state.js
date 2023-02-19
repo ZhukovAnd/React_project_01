@@ -1,66 +1,69 @@
+let store = {
 
-let myRender = () => {
-  console.log("Change app")
-}
+  _state: {
+    profilePage: {
+      mypostData: [
+        { id: "1", message: "эй, как дела" },
+        { id: "2", message: "Это мой второй пост" },
+        { id: "3", message: "Это мой третий пост" },
+        { id: "4", message: "Мне нравиться React" }
+      ],
+      myPostText: ''
+    },
 
-const state = {
-  profilePage: {
-    mypostData: [
-      { id: "1", message: "эй, как дела" },
-      { id: "2", message: "Это мой второй пост" },
-      { id: "3", message: "Это мой третий пост" },
-      { id: "4", message: "Мне нравиться React" }
-    ],
-    myPostText: ''
+    dialogPage: {
+      dialogData: [
+        { name: "Андрей", id: "1" },
+        { name: "Сергей", id: "2" },
+        { name: "Василий", id: "3" }
+      ],
+      messageData: [
+        { message: "Привет!", id: "1" },
+        { message: "Как твои дела?", id: "2" },
+        { message: "Ура! Всё получилось", id: "3" },
+      ],
+      messageText: ''
+    }
   },
+  getState() {
+    return this._state;
+  },
+  _callSubscraiber() { //функция переименованная из myRender
+    console.log("Change app")
+  },
+  addPost() {
+    let addText = {
+      id: 5,
+      message: this._state.profilePage.myPostText
+    }
+    this._state.profilePage.mypostData.push(addText)
+    this._state.profilePage.myPostText = '';
+this._callSubscraiber(this._state)
+  },
+  upduteNewPostText(newText) {
+    this._state.profilePage.myPostText = newText
+    this._callSubscraiber(this._state)
+  },
+  addMessage(text) {
+    let addMessage = {
+      id: 10,
+      message: this._state.dialogPage.messageText
+    }
+    this._state.dialogPage.messageData.push(addMessage)
+    this._state.dialogPage.messageText = '';
+    this._callSubscraiber(this._state)
+  },
+  updateNewMessageText(newMessage) {
+    this._state.dialogPage.messageText = newMessage
+    this._callSubscraiber(this._state)
+  },
+  subscrabe(observer) { //наблюдатель
+    this._callSubscraiber = observer;
+  }
 
-  dialogPage: {
-    dialogData: [
-      { name: "Андрей", id: "1" },
-      { name: "Сергей", id: "2" },
-      { name: "Василий", id: "3" }
-    ],
-    messageData: [
-      { message: "Привет!", id: "1" },
-      { message: "Как твои дела?", id: "2" },
-      { message: "Ура! Всё получилось", id: "3" },
-    ],
-    messageText: ''
-  }
-}
-window.state = state
-
-export let addPost = (text) => {
-  let addText = {
-    id: 5,
-    message: state.profilePage.myPostText
-  }
-  state.profilePage.mypostData.push(addText)
-  state.profilePage.myPostText = '';
-  myRender(state)
-}
-export let upduteNewPostText = (newText) => {
-  state.profilePage.myPostText = newText
-  myRender(state)
-}
-// end my posts
-export let addMessage = (text) => {
-  let addMessage = {
-    id: 10,
-    message: state.dialogPage.messageText
-  }
-  state.dialogPage.messageData.push(addMessage)
-  state.dialogPage.messageText = '';
-  myRender(state)
-}
-//end app message
-export let updateNewMessageText = (newMessage) => {
-  state.dialogPage.messageText = newMessage
-  myRender(state)
-}
-//end dialog messages
-export const subscrabe = (observer) => { //наблюдатель
-  myRender = observer;
 }
 
-export default state
+window.state = store
+
+
+export default store

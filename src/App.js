@@ -11,8 +11,6 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Sitting from './components/Sitting/Sitting';
 
-import { upduteNewPostText } from './redux/state';
-import { updateNewMessageText } from './redux/state';
 const App = (props) => {
   return (
     <div className="app-wrapper">
@@ -24,13 +22,13 @@ const App = (props) => {
             element={<Dialog
               dialogsData={props.state.dialogPage}
               addMessage={props.addMessage}
-              updateNewMessageText={updateNewMessageText}
+              updateNewMessageText={props.updateNewMessageText}
             />} />
           <Route path='/profile'
             element={<Profile
               myProfilePage={props.state.profilePage}
               addPost={props.addPost}
-              upduteNewPostText={upduteNewPostText}
+              upduteNewPostText={props.upduteNewPostText}
             />} />
           <Route path='/news' element={<News />} />
           <Route path='/music' element={<Music />} />

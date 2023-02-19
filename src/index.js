@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
-import state from './redux/state';
+import store from './redux/state';
 import './index.css';
 import App from './App';
-import { addPost, addMessage, subscrabe } from './redux/state';
 
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,13 +14,18 @@ let myRender = (state) => {
     root.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App state={state} addPost={addPost} addMessage={addMessage} />
+                <App state={store.getState()} 
+                    addPost={store.addPost.bind(store)} 
+                    addMessage={store.addMessage.bind(store)}
+                    updateNewMessageText={store.updateNewMessageText.bind(store)}
+                    upduteNewPostText={store.upduteNewPostText.bind(store)}
+                     />
             </React.StrictMode>
         </BrowserRouter>)
 }
 
-myRender(state)
+myRender(store.getState())
 
-subscrabe(myRender)
+store.subscrabe(myRender)
 
 reportWebVitals();
