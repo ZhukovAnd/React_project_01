@@ -10,7 +10,6 @@ let store = {
       ],
       myPostText: ''
     },
-
     dialogPage: {
       dialogData: [
         { name: "Андрей", id: "1" },
@@ -31,37 +30,73 @@ let store = {
   _callSubscraiber() { //функция переименованная из myRender
     console.log("Change app")
   },
-  addPost() {
-    let addText = {
-      id: 5,
-      message: this._state.profilePage.myPostText
-    }
-    this._state.profilePage.mypostData.push(addText)
-    this._state.profilePage.myPostText = '';
-this._callSubscraiber(this._state)
-  },
-  upduteNewPostText(newText) {
-    this._state.profilePage.myPostText = newText
-    this._callSubscraiber(this._state)
-  },
-  addMessage(text) {
-    let addMessage = {
-      id: 10,
-      message: this._state.dialogPage.messageText
-    }
-    this._state.dialogPage.messageData.push(addMessage)
-    this._state.dialogPage.messageText = '';
-    this._callSubscraiber(this._state)
-  },
-  updateNewMessageText(newMessage) {
-    this._state.dialogPage.messageText = newMessage
-    this._callSubscraiber(this._state)
-  },
   subscrabe(observer) { //наблюдатель
     this._callSubscraiber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let addText = {
+        id: 5,
+        message: this._state.profilePage.myPostText
+      }
+      this._state.profilePage.mypostData.push(addText)
+      this._state.profilePage.myPostText = '';
+      this._callSubscraiber(this._state)
+    }
+    else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.myPostText = action.newText
+      this._callSubscraiber(this._state)
+    }
+    else if (action.type === 'ADD-MESSAGE') {
+      let addMessage = {
+        id: 10,
+        message: this._state.dialogPage.messageText
+      }
+      this._state.dialogPage.messageData.push(addMessage)
+      this._state.dialogPage.messageText = '';
+      this._callSubscraiber(this._state)
+    }
+    else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._state.dialogPage.messageText = action.newMessage
+      this._callSubscraiber(this._state)
+    }
+
   }
 
-}
+
+
+
+
+    //   addPost() {
+    //     let addText = {
+    //       id: 5,
+    //       message: this._state.profilePage.myPostText
+    //     }
+    //     this._state.profilePage.mypostData.push(addText)
+    //     this._state.profilePage.myPostText = '';
+    // this._callSubscraiber(this._state)
+    //   },
+    // upduteNewPostText(newText) {
+    //   this._state.profilePage.myPostText = newText
+    //   this._callSubscraiber(this._state)
+    // },
+    // addMessage(text) {
+    //   let addMessage = {
+    //     id: 10,
+    //     message: this._state.dialogPage.messageText
+    //   }
+    //   this._state.dialogPage.messageData.push(addMessage)
+    //   this._state.dialogPage.messageText = '';
+    //   this._callSubscraiber(this._state)
+    // },
+    // updateNewMessageText(newMessage) {
+    //   this._state.dialogPage.messageText = newMessage
+    //   this._callSubscraiber(this._state)
+    // },
+
+
+  }
 
 window.state = store
 

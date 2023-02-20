@@ -15,11 +15,7 @@ let myRender = (state) => {
         <BrowserRouter>
             <React.StrictMode>
                 <App state={store.getState()} 
-                    addPost={store.addPost.bind(store)} 
-                    addMessage={store.addMessage.bind(store)}
-                    updateNewMessageText={store.updateNewMessageText.bind(store)}
-                    upduteNewPostText={store.upduteNewPostText.bind(store)}
-                     />
+                    dispatch={store.dispatch.bind(store)} />
             </React.StrictMode>
         </BrowserRouter>)
 }
