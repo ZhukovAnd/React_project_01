@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
 let store = {
 
   _state: {
@@ -62,41 +67,25 @@ let store = {
       this._callSubscraiber(this._state)
     }
 
-  }
+  } // end dispatch
+
+} //end store
 
 
 
 
 
-    //   addPost() {
-    //     let addText = {
-    //       id: 5,
-    //       message: this._state.profilePage.myPostText
-    //     }
-    //     this._state.profilePage.mypostData.push(addText)
-    //     this._state.profilePage.myPostText = '';
-    // this._callSubscraiber(this._state)
-    //   },
-    // upduteNewPostText(newText) {
-    //   this._state.profilePage.myPostText = newText
-    //   this._callSubscraiber(this._state)
-    // },
-    // addMessage(text) {
-    //   let addMessage = {
-    //     id: 10,
-    //     message: this._state.dialogPage.messageText
-    //   }
-    //   this._state.dialogPage.messageData.push(addMessage)
-    //   this._state.dialogPage.messageText = '';
-    //   this._callSubscraiber(this._state)
-    // },
-    // updateNewMessageText(newMessage) {
-    //   this._state.dialogPage.messageText = newMessage
-    //   this._callSubscraiber(this._state)
-    // },
 
+export const addPostActionCreater = () => ({ type: ADD_POST })
 
-  }
+export const updateNewPostTextActionCreater = (text) =>
+  ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export const addMessageActionCreater = () => ({ type: ADD_MESSAGE })
+
+export const updateNewMessageTextActionCreater = (message) =>
+  ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: message })
+
 
 window.state = store
 
