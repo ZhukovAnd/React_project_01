@@ -12,6 +12,7 @@ import Music from './components/Music/Music';
 import Sitting from './components/Sitting/Sitting';
 
 const App = (props) => {
+ 
   return (
     <div className="app-wrapper">
       <Header />

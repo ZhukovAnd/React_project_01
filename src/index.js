@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
-import store from './redux/store';
+import store from './redux/reduxStore';
 import './index.css';
 import App from './App';
 
@@ -22,6 +22,9 @@ let myRender = (state) => {
 
 myRender(store.getState())
 
-store.subscrabe(myRender)
+store.subscribe(() => {
+    let state = store.getState()
+    myRender(state)
+})
 
 reportWebVitals();
