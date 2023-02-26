@@ -2,29 +2,29 @@ import React from 'react';
 import Post from './MyPost/Post';
 import style from './MyPosts.module.css'
 
-import { addPostActionCreater, updateNewPostTextActionCreater} from '../../../redux/profileReducer';
+
 
 
 const MyPosts = (props) => {
    
-    let postsElements = props.profileData.mypostData.map(postEl => <Post message={postEl.message} />)
+    let postsElements = props.posts.map(postEl => <Post message={postEl.message} />)
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreater());
+    let onAddPost = () => {
+        props.addPost();
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextActionCreater(text))
+        props.updateNewPostText(text)
     }
     return (
         <div className={style.content}>
             <div>
                 <div>               
                     <textarea onChange={onPostChange}
-                        ref={newPostElement} value={props.profileData.myPostText} />
+                        ref={newPostElement} value={props.myPostText} />
                 </div>
-                <button onClick={addPost}>Добавить пост</button>
+                <button onClick={onAddPost}>Добавить пост</button>
                 <h3> Мои посты</h3>
                 <div className={style.postContent}>
                     {postsElements}
@@ -34,4 +34,4 @@ const MyPosts = (props) => {
     )
 }
 
-export default MyPosts
+export default MyPosts;

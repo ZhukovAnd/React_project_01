@@ -13,8 +13,7 @@ let init_state = {
     { message: "Ура! Всё получилось", id: "3" },
   ],
   messageText: ''
-} 
-
+}
 
 const dialogReducer = (state = init_state, action) => {//аргументы в строгом порядке
   switch (action.type) {
