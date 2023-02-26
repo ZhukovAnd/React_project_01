@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/reduxStore';
 import './index.css';
 import App from './App';
-
+import StoreContext from './redux/StoreContext';
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,7 +14,9 @@ let myRender = (state) => {
     root.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App store={store} />
+            <StoreContext.Provider value={store}>
+                <App />
+            </StoreContext.Provider>
             </React.StrictMode>
         </BrowserRouter>)
 }
