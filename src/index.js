@@ -6,11 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/reduxStore';
 import './index.css';
 import App from './App';
-import { Provider } from './redux/StoreContext';
+import { Provider } from 'react-redux';
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
 
-let myRender = (state) => {
+let myRender = () => {
     root.render(
         <BrowserRouter>
             <React.StrictMode>
