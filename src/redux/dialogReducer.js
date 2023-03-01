@@ -22,19 +22,12 @@ const dialogReducer = (state = init_state, action) => {//аргументы в �
         id: 10,
         message: state.messageText
       }
-      let stateCopy = { ...state }
-      stateCopy.messageData = [...state.messageData]
-      stateCopy.messageData.push(addMessage)
-      stateCopy.messageText = '';
-      return stateCopy;
+      return { ...state, messageData: [...state.messageData, addMessage], messageText: '' };
     }
-    case UPDATE_NEW_MESSAGE_TEXT: {
-      let stateCopy = { ...state }
-      stateCopy.messageText = action.newMessage;
-      return stateCopy;
-    }
-    default: return state
+    case UPDATE_NEW_MESSAGE_TEXT:
+      return { ...state, messageText: action.newMessage }
 
+    default: return state
   }
 }
 export const addMessageActionCreater = () => ({ type: ADD_MESSAGE })
