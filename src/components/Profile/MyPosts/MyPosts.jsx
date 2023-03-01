@@ -7,7 +7,7 @@ import style from './MyPosts.module.css'
 
 const MyPosts = (props) => {
    
-    let postsElements = props.posts.map(postEl => <Post message={postEl.message} />)
+    let postsElements = props.mypostData.map(postEl => <Post message={postEl.message} />)
     let newPostElement = React.createRef();
 
     let onAddPost = () => {
@@ -15,7 +15,7 @@ const MyPosts = (props) => {
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text)
+        props.onPostChange(text)
     }
     return (
         <div className={style.content}>

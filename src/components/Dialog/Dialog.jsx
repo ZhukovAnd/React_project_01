@@ -19,7 +19,7 @@ let onAddMessage = () =>{
 
 let onMessageChange = () => {
     let message = newMessageElement.current.value;
-    props.updateNewMessageText(message)
+    props.onMessageChange(message)
 }
     return (
         <div>

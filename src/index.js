@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
 
-let myRender = () => {
+
     root.render(
         <BrowserRouter>
             <React.StrictMode>
@@ -19,13 +19,8 @@ let myRender = () => {
                 </Provider>
             </React.StrictMode>
         </BrowserRouter>)
-}
 
-myRender(store.getState())
 
-store.subscribe(() => {
-    let state = store.getState()
-    myRender(state)
-})
+
 
 reportWebVitals();

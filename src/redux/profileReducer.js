@@ -8,23 +8,27 @@ let init_state = {
     { id: "3", message: "Это мой третий пост" },
     { id: "4", message: "Мне нравиться React" }
   ],
-  myPostText: ''
+  myPostText: 'IT-Camasutra.com'
 }
 
 const profileReducer = (state = init_state, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let addText = {
         id: 5,
         message: state.myPostText
       }
-      state.mypostData.push(addText)
-      state.myPostText = '';
-      return state;
-
-    case UPDATE_NEW_POST_TEXT:
-      state.myPostText = action.newText
-      return state;
+      let stateCopy = {...state};
+      stateCopy.mypostData = [...state.mypostData]
+      stateCopy.mypostData.push(addText)
+      stateCopy.myPostText = '';
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = {...state};
+      stateCopy.myPostText = action.newText
+      return stateCopy;
+    }
     default: return state;
   }
 }

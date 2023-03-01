@@ -17,19 +17,24 @@ let init_state = {
 
 const dialogReducer = (state = init_state, action) => {//аргументы в строгом порядке
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ADD_MESSAGE: {
       let addMessage = {
         id: 10,
         message: state.messageText
       }
-      state.messageData.push(addMessage)
-      state.messageText = '';
-      return state;
-
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.messageText = action.newMessage;
-      return state;
+      let stateCopy = { ...state }
+      stateCopy.messageData = [...state.messageData]
+      stateCopy.messageData.push(addMessage)
+      stateCopy.messageText = '';
+      return stateCopy;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      let stateCopy = { ...state }
+      stateCopy.messageText = action.newMessage;
+      return stateCopy;
+    }
     default: return state
+
   }
 }
 export const addMessageActionCreater = () => ({ type: ADD_MESSAGE })
