@@ -10,9 +10,6 @@ let mapStateToProps = (state) => {
         messageText: state.dialogPage.messageText
     }
 }
-// dialogData={state.dialogPage.dialogData}
-// messages={state.dialogPage.messageData}
-// messageText={state.dialogPage.messageText}
 
 let mapDispatchToProps = (dispatch) => {
     return {

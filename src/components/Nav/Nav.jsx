@@ -13,6 +13,9 @@ const Nav = (props) => {
                 <NavLink to='/dialogs' activeClassName={style.active}> Сообщения </NavLink>
             </div>
             <div className={style.item}>
+                <NavLink to='/users' activeClassName={style.active}> Пользователи </NavLink>
+            </div>
+            <div className={style.item}>
                 <NavLink to='/news'> Новости </NavLink>
             </div>
             <div className={style.item}>

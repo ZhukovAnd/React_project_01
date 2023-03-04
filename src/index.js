@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
 
-
     root.render(
         <BrowserRouter>
             <React.StrictMode>
@@ -19,8 +18,5 @@ let root = ReactDOM.createRoot(document.getElementById('root'));
                 </Provider>
             </React.StrictMode>
         </BrowserRouter>)
-
-
-
 
 reportWebVitals();

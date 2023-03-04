@@ -9,9 +9,7 @@ import { connect } from "react-redux";
             myPostText: state.profilePage.myPostText
         }
     }
-    // posts={state.profilePage.mypostData}
-    // myPostText={state.profilePage.myPostText}
-   
+ 
     let mapDispatchToProps = (dispatch) => {
         return {
             addPost: () => {
