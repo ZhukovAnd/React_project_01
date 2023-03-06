@@ -8,3 +8,7 @@
     border: bottom 2px brown;
     background-color: darkgray;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
