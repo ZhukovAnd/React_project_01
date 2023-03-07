@@ -6,18 +6,16 @@ const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 
 let init_state = {
   users: [],
-  pageSize: 50,
-  totalUsersCount: 19,
-  currentPage: 2
+  pageSize: 10,
+  totalUsersCount: 0,
+  currentPage: 1
 }
 
 const usersReducer = (state = init_state, action) => {
 
   switch (action.type) {
       case FOLLOW:
-        return {
-          ...state,
-          users: state.users.map( u => {
+        return {...state, users: state.users.map( u => {
             if (u.id === action.userId) {
               return {...u, followed: true}
             }
@@ -25,9 +23,7 @@ const usersReducer = (state = init_state, action) => {
           })
         }
     case UNFOLLOW:
-    return {
-      ...state, 
-      users: state.users.map( u => {
+    return {...state, users: state.users.map( u => {
         if(u.id ===action.userId) {
           return {...u, followed: false}
         }
