@@ -10,15 +10,11 @@ import { connect } from "react-redux";
         }
     }
  
-    let mapDispatchToProps = (dispatch) => {
-        return {
-            addPost: () => {
-                dispatch(addPostActionCreater());
-            },
-            onPostChange: (text) => {
-                dispatch(updateNewPostTextActionCreater(text))
-            }
-        }
+    let mapDispatchToProps = {
+            addPost: addPostActionCreater,
+            onPostChange: updateNewPostTextActionCreater
+            
+        
     }
 
     const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)

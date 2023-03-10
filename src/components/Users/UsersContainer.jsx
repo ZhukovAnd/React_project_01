@@ -1,9 +1,10 @@
 import React from "react";
+import preloader from '../../assets/images/preloader.svg'
+
 import Users from "./Users";
 import axios from 'axios';
 import { connect } from "react-redux";
 import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC } from "../../redux/usersReducer";
-import preloader from '../../assets/images/preloader.svg'
 import style from './Users.module.css';
 
 let mapStateToProps = (state) => {
@@ -15,28 +16,38 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(followAC(userId));
+//         },
+//         unfollow: (userId) => {
+//             dispatch(unfollowAC(userId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users))
+//         },
+//         setCurrentPage: (pageNumber) => {
+//             dispatch(setCurrentPageAC(pageNumber))
+//         },
+//         setTotalUsersCount: (totalCount) => {
+//             dispatch(setTotalUsersCountAC(totalCount))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(toggleIsFetchingAC(isFetching))
+//         }
+//     }
+//}
+
+let mapDispatchToProps = {
+    follow: followAC,
+    unfollow: unfollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    toggleIsFetching: toggleIsFetchingAC
     }
-}
+
 
 class UsersAPI extends React.Component {
 

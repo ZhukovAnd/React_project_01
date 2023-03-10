@@ -1,14 +1,24 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
+import preloader from '../../../assets/images/preloader.svg'
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+    return  <div>
+            <img src={preloader} />
+        </div>
+    }
     return (
         <div className={style.content}>
             <div className='content_img'>
                 <img src='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg' alt="img_content" />
             </div>
             <div>
-                Ava + profile
+                <img src={props.profile.photos.large} alt='Avatar' />
+            </div>
+            <div className={style.profileInfo}>
+                <div>Меня зовут: <span> {props.profile.fullName}</span></div>
+                <div>Обо мне: <span> {props.profile.aboutMe}</span></div>
             </div>
         </div>
     )

@@ -2,3 +2,14 @@
 .item {
     color: azure;
 }
+
+.profileInfo {
+    font-size: large;
+    font-weight: bold;
+}
+
+.profileInfo span {
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
