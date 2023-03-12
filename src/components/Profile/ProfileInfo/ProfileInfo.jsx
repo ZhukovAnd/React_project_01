@@ -1,12 +1,10 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
-import preloader from '../../../assets/images/preloader.svg'
+import Preloader from '../../AssistantsComponent/Preloader/Preloader';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
-    return  <div>
-            <img src={preloader} />
-        </div>
+    return  <Preloader />
     }
     return (
         <div className={style.content}>

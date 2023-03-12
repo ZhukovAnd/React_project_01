@@ -9,3 +9,11 @@
     width: 60px;
     height: 60px;
   }
+
+  .authBlock {
+    float: right;
+  }
+
+  .authBlock a {
+    color: white;
+  }

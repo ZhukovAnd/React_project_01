@@ -1,11 +1,10 @@
 import React from "react";
-import preloader from '../../assets/images/preloader.svg'
-
 import Users from "./Users";
 import axios from 'axios';
 import { connect } from "react-redux";
 import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC } from "../../redux/usersReducer";
 import style from './Users.module.css';
+import Preloader from "../AssistantsComponent/Preloader/Preloader";
 
 let mapStateToProps = (state) => {
     return {
@@ -71,7 +70,7 @@ class UsersAPI extends React.Component {
     }
     render() {
         return <>
-            {this.props.isFetching ? <img src={preloader} alt='preload' /> : null}
+            {this.props.isFetching ? <Preloader /> : null}
             <Users
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
