@@ -1,7 +1,7 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC } from "../../redux/usersReducer";
+import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC, toggleFollowingProgressAC } from "../../redux/usersReducer";
 import Preloader from "../AssistantsComponent/Preloader/Preloader";
 import { userAPI } from "../../api/api";
 
@@ -11,7 +11,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingProgress: state.usersPage.followingProgress
     }
 }
 // let mapDispatchToProps = (dispatch) => {
@@ -43,7 +44,8 @@ let mapDispatchToProps = {
     setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
     setTotalUsersCount: setTotalUsersCountAC,
-    toggleIsFetching: toggleIsFetchingAC
+    toggleIsFetching: toggleIsFetchingAC,
+    toggleFollowingProgress: toggleFollowingProgressAC
 }
 
 class UsersAPI extends React.Component {
@@ -79,6 +81,9 @@ class UsersAPI extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                followingProgress={this.props.followingProgress}
+                
             />
         </>
     }
