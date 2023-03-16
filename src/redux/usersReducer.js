@@ -12,7 +12,7 @@ let init_state = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true, // крутилка
-  followingProgress: false // блокировка кнопки "подписка"
+  followingProgress: [] // блокировка кнопки "подписка"
 }
 
 const usersReducer = (state = init_state, action) => {
@@ -49,7 +49,12 @@ const usersReducer = (state = init_state, action) => {
       return { ...state, isFetching: action.isFetching }
     }
     case TOGGLE_IS_FOLLOWING_PROGRESS: {
-      return {...state, followingProgress: action.isFetching }
+      return {
+        ...state,
+        followingProgress: action.isFetching
+          ? [...state.followingProgress, action.userId]
+          : state.followingProgress.filter(id => id !== action.userId)
+      }
     }
     default: return state
   }
@@ -60,5 +65,5 @@ export const setUsersAC = (users) => ({ type: SET_USERS, users })
 export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_COUNT, count: totalUsersCount })
 export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
-export const toggleFollowingProgressAC = (isFetching) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching })
+export const toggleFollowingProgressAC = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
 export default usersReducer;
