@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Users.module.css';
 import userPhoto from '../../assets/images/images.png'
 import { NavLink } from 'react-router-dom';
-import { userAPI } from '../../api/api';
+
 
 const Users = (props) => {
 
@@ -27,32 +27,21 @@ const Users = (props) => {
                 <span>
                     <div>
                         <NavLink to={'./../profile/' + u.id}>
-                            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={style.userPhoto} alt="Avatar" />
+                            <img src={u.photos.small != null
+                                ? u.photos.small
+                                : userPhoto} className={style.userPhoto} alt="Avatar" />
                         </NavLink>
                     </div>
+
                     <div>{u.followed
-                        ? <button disabled={props.followingProgress.includes(props.id)} onClick={() => {                         
-                            props.toggleFollowingProgress(true, u.id)
-                            userAPI.unfollowUser(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.unfollow(u.id);
-                                    }
-                            props.toggleFollowingProgress(false, u.id)
-                                });
-                        }} >отписаться</button>
-
-                        : <button disabled={props.followingProgress.includes(props.id)} onClick={() => {
-                            props.toggleFollowingProgress(true, u.id)
-                            userAPI.followUser(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(u.id)
-                                    }
-                            props.toggleFollowingProgress(false, u.id)
-                                });
-                        }} >подписаться</button>
-
+                        ? <button disabled={props.followingProgress.some(id => id === u.id)}
+                            onClick={() => {
+                                props.unfollow(u.id)
+                            }} >отписаться</button>
+                        : <button disabled={props.followingProgress.some(id => id === u.id)}
+                            onClick={() => {
+                                props.follow(u.id)
+                            }} >подписаться</button>
                     }
                     </div>
                 </span>

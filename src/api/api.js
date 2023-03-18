@@ -33,6 +33,12 @@ export const userAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    getAuth() {
+        return instance.get(`auth/me`)
+            .then(response => {
+                return response.data.data
+            })
     }
 }
 

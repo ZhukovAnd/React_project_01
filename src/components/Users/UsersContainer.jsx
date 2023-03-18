@@ -1,9 +1,9 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC, toggleFollowingProgressAC } from "../../redux/usersReducer";
+import { follow, unfollow, setCurrentPageAC, toggleFollowingProgressAC, getUsersThunkCreator } from "../../redux/usersReducer";
 import Preloader from "../AssistantsComponent/Preloader/Preloader";
-import { userAPI } from "../../api/api";
+
 
 let mapStateToProps = (state) => {
     return {
@@ -39,37 +39,23 @@ let mapStateToProps = (state) => {
 //}
 
 let mapDispatchToProps = {
-    follow: followAC,
-    unfollow: unfollowAC,
-    setUsers: setUsersAC,
+    follow: follow,
+    unfollow: unfollow,
     setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUsersCountAC,
-    toggleIsFetching: toggleIsFetchingAC,
-    toggleFollowingProgress: toggleFollowingProgressAC
+    toggleFollowingProgress: toggleFollowingProgressAC,
+    getUsers: getUsersThunkCreator
 }
 
 class UsersAPI extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-
-        userAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
+
     onChangePage = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true)
-
-        userAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : null}
@@ -81,7 +67,7 @@ class UsersAPI extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
-                toggleFollowingProgress={this.props.toggleFollowingProgress}
+               
                 followingProgress={this.props.followingProgress}
                 
             />
