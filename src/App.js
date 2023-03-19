@@ -11,7 +11,7 @@ import Sitting from './components/Sitting/Sitting';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-
+import Login from './components/Login/Login.jsx';
 
 
 const App = (props) => {
@@ -23,13 +23,14 @@ const App = (props) => {
         <Routes>
           <Route path='/dialogs'
             element={<DialogContainer />} />
-          <Route path='/profile/:profileId'
-            element={<ProfileContainer />} />
+          <Route path='/profile/' element={<ProfileContainer />} />
+          <Route path='/profile/:profileId' element={<ProfileContainer />} />
           <Route path='/users'
             element={<UsersContainer />} />
           <Route path='/news' element={<News />} />
           <Route path='/music' element={<Music />} />
-          <Route path='/sitting' element={<Sitting />} />        
+          <Route path='/sitting' element={<Sitting />} /> 
+          <Route path='/login' element={<Login />} />        
         </Routes>
       </div>
     </div>

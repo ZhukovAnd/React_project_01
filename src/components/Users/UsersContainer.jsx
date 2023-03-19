@@ -3,6 +3,7 @@ import Users from "./Users";
 import { connect } from "react-redux";
 import { follow, unfollow, setCurrentPageAC, toggleFollowingProgressAC, getUsersThunkCreator } from "../../redux/usersReducer";
 import Preloader from "../AssistantsComponent/Preloader/Preloader";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 
 let mapStateToProps = (state) => {
@@ -47,7 +48,6 @@ let mapDispatchToProps = {
 }
 
 class UsersAPI extends React.Component {
-
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
@@ -66,8 +66,7 @@ class UsersAPI extends React.Component {
                 onChangePage={this.onChangePage}
                 users={this.props.users}
                 follow={this.props.follow}
-                unfollow={this.props.unfollow}
-               
+                unfollow={this.props.unfollow}               
                 followingProgress={this.props.followingProgress}
                 
             />
@@ -75,4 +74,4 @@ class UsersAPI extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
+export default withAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(UsersAPI))
