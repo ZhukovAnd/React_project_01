@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
                 : profilePhoto
                 } alt='Avatar' />
             </div>
-            <ProfileStatus status="Hello my friends!"/>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             <div className={style.profileInfo}>
                 <div>Меня зовут: <span> {props.profile.fullName}</span></div>
                 <div>Обо мне: <span> {props.profile.aboutMe}</span></div>

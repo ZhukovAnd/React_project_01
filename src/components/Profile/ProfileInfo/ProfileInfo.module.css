@@ -16,4 +16,7 @@
 
 .profileStatus{
     margin: 50px;
+    font-size: x-large;
+    font-weight: bold;
+    color: #700cf2;
 }
