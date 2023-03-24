@@ -38,14 +38,14 @@ const profileReducer = (state = init_state, action) => {
     default: return state;
   }
 }
-
+// Экшн криэйтеры
 export const addPostActionCreater = () => ({ type: ADD_POST })
 export const updateNewPostTextActionCreater = (text) =>
   ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setProfileStatusAC = (status) => ({type: SET_STATUS, status})
 
-
+// Thunk - санки
 export const getUserProfile = (profileId) => (dispatch) => {
   userAPI.getProfile(profileId)
     .then(data => {
